@@ -1,0 +1,128 @@
+.nav-container{
+    display: flex;
+}
+.nav-lists{
+    display:flex;
+    list-style-type: none;
+    gap:2rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+.nav-link:link,:visited{
+    display: flex;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: green;
+    transition: color 0.3s linear;
+
+}
+.nav-link:hover{
+    border: solid black;
+    background-color: white;
+    color: black;
+    border-width: 2px;
+    border-radius: 8%;
+
+}
+.cart-link{
+    position:relative;
+
+}
+.cart-logo{
+    position:relative;
+    font-size: 2rem;
+
+}
+.cart-total{
+    width: 5px;
+    height:5px;
+    position: absolute;
+    background-color: #000;
+    color: #000;
+    border-radius: 20%;
+    display: grid;
+    place-items: center;
+    top:-40%;
+    left:95%;
+    background-color: azure;
+
+}
+.nav-btn{
+    display: none;
+    background-color: transparent;
+    cursor: pointer;
+    border:none;
+}
+nav-icon[name="close-outline"]{
+    display: none;
+}
+.close-outline{
+    display: none;
+}
+@media screen and (max-width:767px){
+    .nav-btn{
+        display: inline-block;
+        z-index:9999;
+        border: rgb(93, 221, 93);
+    }
+    .nav-icon{
+        font-size: 4.5rem;
+        color:green;
+    }
+    .active .nav-icon{
+        display: none;
+        font-size: 4rem;
+        position: absolute;
+        top:30%;
+        right:10%;
+        color: black;
+        z-index:9999l
+    }
+    .active .close-outline{
+        display: inline-block;
+    }
+    .nav-lists{
+        width:100vw;
+        height:100vh;
+        position: absolute;
+        top:0;
+        left:0;
+        background-color: #fff;
+
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        visibility: hidden;
+        opacity: 0;
+        transform: translate(100%);
+        transition: all 3s linear;
+    }
+    .active .nav-lists{
+        visibility: visible;
+        opacity: 1;
+        transform: translate(0);
+        z-index:999;
+        transform-origin: right;
+        transition: all 3s linear;
+    }
+    .nav-link{
+        font-size: 4rem;
+    }
+    .cart-link{
+        position: relative;
+    }
+    .cart-logo{
+        position: relative;
+        font-size: 5.2rem;
+
+    }
+    .cart-total{
+        width:4rem;
+        height:4rem;
+        font-size: 2rem;
+
+    }
+}
