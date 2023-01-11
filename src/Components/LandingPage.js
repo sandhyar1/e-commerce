@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './HeroSection.css'
+import './LandingPage.css'
 
-const HeroSection = () =>{
+const LandingPage = () =>{
     <div className='conatiner'>
      <div className='grid grid-two-column'>
     <div className='hero-section-data'>
@@ -23,4 +23,4 @@ const HeroSection = () =>{
     </div>
 
 }
-export default HeroSection;
+export default LandingPage

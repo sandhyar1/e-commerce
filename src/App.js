@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./About";
 import Home from "./Home";
 import Product from "./Product";
@@ -11,7 +11,7 @@ import Header from "./Components/Header";
 
 const App = () => {
 return (
-      <Router>
+      <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -22,7 +22,7 @@ return (
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
   );
 };
 export default App;

@@ -1,8 +1,8 @@
 import React from 'react'
-import HeroSection from './Components/HeroSection'
+import LandingPage from './Components/LandingPage';
 
 const About =() => {
-  return  <HeroSection />
+  return  <LandingPage />
 };
 
 export default About;
