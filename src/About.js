@@ -1,8 +1,15 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import LandingPage from './Components/LandingPage';
+import {useProductContext} from "./context/productcontex"
 
 const About =() => {
-  return  <LandingPage />
+const {myName}= useProductContext();
+  return(
+    <>  
+    {myName}
+  <LandingPage />
+  </>
+  )
 };
 
 export default About;

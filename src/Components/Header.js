@@ -1,17 +1,29 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import "./Header.css"
+import styled from 'styled-components';
 import Nav from './Nav';
 
 const Header = () => {
   return (
-    <div className='header'>
+    <MainHeader>
        <NavLink to="/">
-       <img className='img' src="./images/logo.jpg" alt="my logo img" />
+       <img src="./images/logo.jpg" alt="my logo img" />
        </NavLink>
         <Nav />
-       </div>
+       </MainHeader>
   );
 };
+const MainHeader = styled.header` 
+padding:0 4.8rem;
+height:9rem;
+background:gray;
+display:flex;
+justify-content: space-between;
+align-items: center;
+position: relative;
+img{
+height:9rem;
+}
+`;
 
-export default Header
+export default Header;
