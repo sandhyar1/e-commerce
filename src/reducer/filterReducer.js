@@ -1,15 +1,42 @@
 
 
-
-
 const filterReducer =  (state,action) =>{
     switch(action.type){
 
         case "LOAD_FILTER_PRODUCTS":
-            return{
+
+         let priceArr = action.payload.map((curElem) =>
+         curElem.price);
+
+                 //console.log(priceArr);
+
+
+                 //1 way
+                 //console.log(Math.max.apply(null,priceArr)); using apply method without apply it gives infinity
+
+                //2nd way
+                // let maxPrice = priceArr.reduce(
+                //     (intialVal,curVal) => Math.max(intialVal,curVal),0
+                // )
+                // console.log(maxPrice);
+            
+                let maxPrice=Math.max(...priceArr);
+                console.log(maxPrice);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                 return{
                 ...state,
                 filter_products:[...action.payload],
                 all_products:[...action.payload],
+                filters:{...state.filters,maxPrice,price:maxPrice},
+        
             };
             case "SET_GRID_VIEW":
                 return{
@@ -49,16 +76,75 @@ const filterReducer =  (state,action) =>{
                         }
                 };
                 newSortData =tempSortProduct.sort(sortingProducts);
+
                 return{
                     ...state,
                     filter_products:newSortData,
                 };
 
-       
-       
+
+                case "UPDATE_FILTERS_VALUE":
+                    const {name,value} =action.payload;
+
+                     return{
+                        ...state,
+                        filters:{
+                            ...state.filters,
+                            [name]:value,
+                        },
+                     };
+
+                case "FILTER_PRODUCTS":
+                    let {all_products} = state;
+                    let tempFilterProduct =[...all_products];
+
+                    const {text,category,price} =state.filters;
+
+                    if (text) {
+                        tempFilterProduct = tempFilterProduct.filter((curElem) => {
+                          return curElem.name.toLowerCase().includes(text);
+                        });
+                      }
+                
+                      if (category !== "all") {
+                        tempFilterProduct = tempFilterProduct.filter(
+                          (curElem) => curElem.category === category
+                        );
+                      }
+                      if(price===0){
+                        tempFilterProduct=tempFilterProduct.filter((curElem) =>
+                            curElem.price == price
+                        );
+                      }else{
+                        tempFilterProduct= tempFilterProduct.filter(
+                            (curElem) => curElem.price <= price
+                        );
+                    }
+                    return{
+                        ...state,
+                        filter_products:tempFilterProduct,
+                    };
+                    case "CLEAR_FILTERS":
+                        return{
+                            ...state,
+                            filters:{
+                                ...state.filters,//for putting origninal values
+                                text:"",
+                                category:"all",
+                                maxPrice:0,
+                                price:state.filters.maxPrice,
+                                minPrice:state.filters.maxPrice,
+
+                            },
+                        };
+                    
                 default:
             return state;
-    }
+   
+   
+        
+        
+        }
 
 
 };

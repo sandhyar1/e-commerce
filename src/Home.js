@@ -3,9 +3,11 @@ import LandingPage from './Components/LandingPage'
 import Footer from './Components/Footer'
 
 const Home =() => {
+  console.log("home")
   return(
     <>
   <LandingPage />
+   
   </>
   )
 

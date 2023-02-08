@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Button } from '../styles/Button';
 
 const LandingPage = () =>{
+  console.log("Landing page");
     return(
         <Wrapper>
     <div className='conatiner'>
@@ -20,7 +21,7 @@ const LandingPage = () =>{
         <img src="images/shopping.jpg"
         alt="hero-section-photo"
         className="img-style"/>
-        </figure>
+    </figure>
     </div>
     </div>
     </div>

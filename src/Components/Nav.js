@@ -3,9 +3,11 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import {FiShoppingCart} from "react-icons/fi";
 import {CgMenu,CgClose} from "react-icons/cg" ;
+import { useCartContext } from '../context/cart_context';
 
 const Nav = () => {
    const [menuIcon,setMenuIcon] = useState();
+   const {total_item} = useCartContext();
   return (
    <Wrapper>
    <nav>
@@ -34,7 +36,7 @@ const Nav = () => {
      <li>
         <NavLink to="/cart" className="nav-link cart-trolley--link">
         <FiShoppingCart  className="cart-trolley"/>
-        <span className='cart-total--item'>0</span> </NavLink>
+        <span className='cart-total--item'>{total_item}</span> </NavLink>
      </li>
      </ul>
      {/* two buttons for open and close  Hamburger menu bar for responsive using react icons*/}
@@ -98,8 +100,8 @@ const Wrapper =styled.section`
         width: 2.4rem;
         height: 2.4rem;
         position: absolute;
-        background-color: #000;
-        color: #000;
+        background-color: blue;
+        color: white;
         border-radius: 50%;
         display: grid;
         place-items: center;
