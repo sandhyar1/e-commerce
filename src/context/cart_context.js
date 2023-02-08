@@ -5,11 +5,15 @@ const CartContext =createContext();
 
 const getLocalCartData = () =>{
     let CartData = localStorage.getItem("shopifyCART");
-    if(CartData === []){
-        return [];
-    } else{
-        return JSON.parse(CartData)
-    }
+    // if(CartData === []){
+    //     return [];
+    // } else{
+    //     return JSON.parse(CartData)
+    // }
+    const parseData = JSON.parse(CartData);
+    if(!Array.isArray(parseData))
+    return [];
+    return parseData;
 }
 
 const intialState = {
