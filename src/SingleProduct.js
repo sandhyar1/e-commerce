@@ -21,8 +21,8 @@ const SingleProduct = () => {
 
  const { id } = useParams();
 
- const {id:alias,category,price,title,image,description}=singleProduct;
-//const {rate,count}=rating;
+ const {id:alias,category,price,title,image,description,rating}=singleProduct;
+const {rate,count}=rating;
 
 
     useEffect(() => {
@@ -47,7 +47,7 @@ const SingleProduct = () => {
           {/* product dAta  */}
           <div className="product-data">
             <h2>{title}</h2>
-            {/* <Rating rate={rate} count={count} /> */}
+            <Rating rate={rate} count={count} />
 
             <p className="product-data-price">
               MRP:{price + 25000}
