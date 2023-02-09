@@ -54,7 +54,7 @@ const Cart = () => {
         <div className='order-total--subdata'>
           <div>
             <p>subtotal:</p>
-            <p>{total_amount}</p>
+            <p>{total_amount+25000}</p>
           </div>
   
         <div>
@@ -64,7 +64,7 @@ const Cart = () => {
         <hr />
         <div>
           <p>order total:</p>
-          <p>{shipping_fee + total_amount}</p>
+          <p>{shipping_fee + total_amount+25000}</p>
         </div>
         </div>
       </div>

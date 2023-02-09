@@ -29,7 +29,7 @@ const CartItem = ({image,id,title,price,amount}) => {
          {/* price */}
         <div className='cart-hide'>
             <p>
-            MRP:{price}
+            MRP:{price+25000}
             </p>
         </div>
          
@@ -42,7 +42,7 @@ const CartItem = ({image,id,title,price,amount}) => {
          {/* subtotal */}
          <div className='cart-hide'>
             <p>
-            {price * amount} 
+            {price+25000 * amount} 
             </p>
          </div>
 

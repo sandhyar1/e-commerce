@@ -6,13 +6,13 @@ let     {id,amount,product} =action.payload;
 
         //for  existing cart item 
         let existingProduct = state.cart.find(
-            (curElem) => curElem.id == id
+            (curElem) => curElem.id === id
         );
         console.log(existingProduct);
      
         if(existingProduct){
           let updatedProduct = state.cart.map((curElem) =>{
-              if(curElem.id == id){
+              if(curElem.id === id){
                 let newAmount = curElem.amount + amount
                 if(newAmount >= curElem.max){
                     newAmount = curElem.max;
