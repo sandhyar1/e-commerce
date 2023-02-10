@@ -1,12 +1,12 @@
 import { useEffect,useState } from "react";
 import {useParams} from "react-router";
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Container } from "./styles/Container";
 import PageNavigation from "./Components/SingleProduct/PageNavigation";
 import Rating from "./Components/SingleProduct/Rating";
 import AddToCart from "./Components/SingleProduct/AddtoCart";
 import { useProductContext } from "./context/productcontex";
+import { FaClosedCaptioning } from "react-icons/fa";
 
 
 
@@ -21,17 +21,27 @@ const SingleProduct = () => {
 
  const { id } = useParams();
 
- const {id:alias,category,price,title,image,description}=singleProduct;
-// const {rate,count}=rating;
 
-
-    useEffect(() => {
-      getSingleProduct(`${API}/${id}`);
+useEffect(() => {
+  getSingleProduct(`${API}/${id}`);
 }, []);
+
+
+ const {id:alias,price,title,image,description,rating}=singleProduct;
+// const {rate,count}=rating;
+ console.log(singleProduct);
+// let Rate="";
+// let Count ="";
+// const timer = setTimeout(() =>{
+//   const {rate,count}=rating;
+//    Rate=rate;
+//    Count=count;
+//   },9000)
 
  if (isSingleLoading) {
       return <div className="page_loading">Loading.....</div>;
   }
+
    return (
       <>
       <Wrapper>
@@ -39,23 +49,26 @@ const SingleProduct = () => {
       <Container className="container">
         <div className="grid grid-two-column">
          {/* product image */}
-         <div className="product_images">
+         <div className="product-images">
          {/* <MyImage  imgs={image} /> */}
-         <img src={image} alt={image} />
+         <img src={image} alt={image}  />
          </div>
 
           {/* product dAta  */}
           <div className="product-data">
             <h2>{title}</h2>
-            {/* <Rating rate={rate} count={count} /> */}
+            {
+              (rating !== undefined)?
+            <Rating rate={rating.rate} count={rating.count} />:""
+            }
+          
 
             <p className="product-data-price">
               MRP:{price + 25000}
             </p>
             <p>{description}</p>
-            <NavLink>
-           <AddToCart className="addtocart" product={singleProduct} />
-            </NavLink>
+           <AddToCart  product={singleProduct} />
+      
           </div>
           </div>
          </Container>
@@ -110,8 +123,12 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    img{
+      height:400px;
+      width:400px;
+    }
   }
+
   .page_loading {
     font-size: 3.2rem;
     display: flex;
